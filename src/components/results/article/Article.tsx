@@ -1,12 +1,14 @@
 import React from 'react';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
+import EastIcon from '@mui/icons-material/East';
+import './Article.css'
+import {getValidDate} from "../../../utils/Date";
 
 interface ArticleProps {
     img: string,
@@ -16,9 +18,12 @@ interface ArticleProps {
 }
 
 const Article: React.FC<ArticleProps> = ({img, title, summary, date}: ArticleProps) => {
+
+    const validDate = getValidDate(date);
+
     return (
         <Card sx={{
-            width: 400,
+            width: '400px',
             height: 530
         }}>
             <CardMedia
@@ -49,35 +54,40 @@ const Article: React.FC<ArticleProps> = ({img, title, summary, date}: ArticlePro
                         sx={{
                             fontSize: '14px'
                         }}>
-                        {date}
+                        {validDate}
                     </Typography>
                 </Box>
                 <Typography
                     variant="h5"
-                    component="div"
+                    component="h5"
+                    className={'article-title'}
                     sx={{
-                        textOverflow: 'ellipsis',
-                        overflow: 'hidden',
-                        height: '58px',
-                        whiteSpace: 'nowrap'
-                    }}>
+                        marginBottom: '20px'
+                    }}
+                    >
                     {title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    {summary}
-                </Typography>
+                    <Typography
+                        variant="body2"
+                        component={'p'}
+                        color="text.secondary"
+                        className={'article-summary'}
+                    >
+                        {summary}
+                    </Typography>
             </CardContent>
-            <CardActions>
-                <Button
-                    size="small"
-                    sx={{
-                        color: 'black',
-                        fontSize: '16px',
-                        fontWeight: '700'
-                    }}>
-                        Read More
-                </Button>
-            </CardActions>
+            <Button
+                size="small"
+                sx={{
+                    color: 'black',
+                    fontSize: '16px',
+                    fontWeight: '700',
+                    margin: '0 25px 25px 25px',
+                    padding: '0'
+                }}>
+                    Read More
+                    <EastIcon/>
+            </Button>
         </Card>
     );
 };

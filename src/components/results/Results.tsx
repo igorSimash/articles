@@ -6,7 +6,6 @@ import {useDispatch} from "react-redux";
 import Article from "./article/Article";
 
 const Results: FC = () => {
-
     const {articles, loading, error} = useTypedSelector(state => state.article);
     const dispatch = useDispatch();
     console.log(articles);
@@ -27,12 +26,13 @@ const Results: FC = () => {
                 sx={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
-                    gap: '45px',
-                    marginTop: '45px'
+                    rowGap: '45px',
+                    marginTop: '45px',
+                    justifyItems: "center"
             }}
                 >
                 {articles.map(article =>
-                    <Article img={article.imageUrl} title={article.title}
+                    <Article key={article.id} img={article.imageUrl} title={article.title}
                             summary={article.summary} date={article.updatedAt}/>
                 )}
 

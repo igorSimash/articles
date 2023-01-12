@@ -1,3 +1,14 @@
+.article-summary, .article-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 24px; }
 
+.article-title {
+  -webkit-line-clamp: 2;
+  height: 62px; }
+
+.article-summary {
+  -webkit-line-clamp: 4; }
 
 /*# sourceMappingURL=Article.css.map */
