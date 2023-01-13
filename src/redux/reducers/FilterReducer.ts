@@ -21,3 +21,5 @@ export const filterReducer = (state = defaultState, action: filterAction): filte
             return state
     }
 };
+
+export const changeFilterText = (payload: string) => ({type: CHANGE_TEXT, payload})

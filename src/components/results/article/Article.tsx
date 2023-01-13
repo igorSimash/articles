@@ -9,17 +9,20 @@ import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 import EastIcon from '@mui/icons-material/East';
 import './Article.css'
 import {getValidDate} from "../../../utils/Date";
+import {useNavigate} from "react-router-dom";
 
 interface ArticleProps {
     img: string,
     title: string,
     summary: string,
-    date: string
+    date: string,
+    id: number
 }
 
-const Article: React.FC<ArticleProps> = ({img, title, summary, date}: ArticleProps) => {
+const Article: React.FC<ArticleProps> = ({img, title, summary, date, id}: ArticleProps) => {
 
     const validDate = getValidDate(date);
+    const navigate = useNavigate();
 
     return (
         <Card sx={{
@@ -77,16 +80,24 @@ const Article: React.FC<ArticleProps> = ({img, title, summary, date}: ArticlePro
                     </Typography>
             </CardContent>
             <Button
+                onClick={() => navigate(`/${id}`)}
                 size="small"
                 sx={{
                     color: 'black',
                     fontSize: '16px',
                     fontWeight: '700',
-                    margin: '0 25px 25px 25px',
-                    padding: '0'
+                    height: '24px',
+                    margin: '12px 25px 25px 25px',
+                    padding: '0',
+                    textTransform: 'initial'
                 }}>
                     Read More
-                    <EastIcon/>
+                    <EastIcon
+                        sx={{
+                            fontSize: '12px',
+                            marginLeft: '6px'
+                        }}
+                        />
             </Button>
         </Card>
     );

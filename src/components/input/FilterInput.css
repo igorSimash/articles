@@ -5,7 +5,9 @@
   border: 1px solid #EAEAEA;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
-  margin-top: 10px;
-  margin-bottom: 40px; }
+  padding-left: 65px;
+  font-size: 16px;
+  color: #575757;
+  font-family: 'Montserrat', sans-serif; }
 
 /*# sourceMappingURL=FilterInput.css.map */

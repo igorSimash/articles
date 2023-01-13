@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import FilterBy from "./components/filter-by/FilterBy";
 import {createTheme, ThemeProvider} from "@mui/material";
-import Results from "./components/results/Results";
+import {router} from "./router/Router";
+import {RouterProvider} from "react-router-dom";
 
 const theme = createTheme({
     typography: {
@@ -14,11 +14,13 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <div className="App">
-                <FilterBy/>
-                <Results/>
+                <RouterProvider router={router}/>
             </div>
         </ThemeProvider>
     );
 }
 
 export default App;
+
+
+
