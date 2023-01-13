@@ -6,10 +6,14 @@
 }
 
 .article-title {
+  line-clamp: 2;
   -webkit-line-clamp: 2;
-  height: 62px;
+  margin-bottom: 20px;
+
+  line-height: 29.26px;
 }
 
 .article-summary {
   -webkit-line-clamp: 4;
+  line-height: 24px;
 }

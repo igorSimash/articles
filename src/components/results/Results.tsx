@@ -5,9 +5,12 @@ import {fetchArticles} from "../../redux/action-creators/fetchArticles";
 import {useDispatch} from "react-redux";
 import Article from "./article/Article";
 import MainPageLoader from "../loader/MainPageLoader";
+import ArticlesWithoutFilter from "./ArticlesWithoutFilter";
+import ArticlesWithFilter from "./ArticlesWithFilter";
 
 const Results: FC = () => {
     const {articles, loading, error} = useTypedSelector(state => state.article);
+    const filter = useTypedSelector(state => state.filter.filterText);
     const dispatch = useDispatch();
     console.log(articles);
 
@@ -39,10 +42,15 @@ const Results: FC = () => {
                     justifyItems: "center"
             }}
                 >
-                {Array.from(articles).map(article =>
-                    <Article key={article.id} id={article.id} img={article.imageUrl} title={article.title}
-                            summary={article.summary} date={article.updatedAt}/>
-                )}
+                {
+                    filter
+                        ?
+                        <ArticlesWithFilter articles={articles} filter={filter}/>
+                        :
+                        <ArticlesWithoutFilter articles={articles}/>
+
+                }
+
 
             </Box>
         </Box>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactFragment} from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -13,8 +13,8 @@ import {useNavigate} from "react-router-dom";
 
 interface ArticleProps {
     img: string,
-    title: string,
-    summary: string,
+    title: string | ReactFragment,
+    summary: string | ReactFragment,
     date: string,
     id: number
 }
@@ -27,7 +27,8 @@ const Article: React.FC<ArticleProps> = ({img, title, summary, date, id}: Articl
     return (
         <Card sx={{
             width: '400px',
-            height: 530
+            height: '530px',
+            position: 'relative',
         }}>
             <CardMedia
                 component="img"
@@ -64,20 +65,17 @@ const Article: React.FC<ArticleProps> = ({img, title, summary, date, id}: Articl
                     variant="h5"
                     component="h5"
                     className={'article-title'}
-                    sx={{
-                        marginBottom: '20px'
-                    }}
-                    >
+                >
                     {title}
                 </Typography>
-                    <Typography
-                        variant="body2"
-                        component={'p'}
-                        color="text.secondary"
-                        className={'article-summary'}
-                    >
-                        {summary}
-                    </Typography>
+                <Typography
+                    variant="body2"
+                    component={'p'}
+                    color="text.secondary"
+                    className={'article-summary'}
+                >
+                    {summary}
+                </Typography>
             </CardContent>
             <Button
                 onClick={() => navigate(`/${id}`)}
@@ -87,17 +85,19 @@ const Article: React.FC<ArticleProps> = ({img, title, summary, date, id}: Articl
                     fontSize: '16px',
                     fontWeight: '700',
                     height: '24px',
-                    margin: '12px 25px 25px 25px',
+                    // margin: '12px 25px 25px 25px',
+                    position: 'absolute',
+                    bottom: '25px', left: '25px',
                     padding: '0',
                     textTransform: 'initial'
                 }}>
-                    Read More
-                    <EastIcon
-                        sx={{
-                            fontSize: '12px',
-                            marginLeft: '6px'
-                        }}
-                        />
+                Read More
+                <EastIcon
+                    sx={{
+                        fontSize: '12px',
+                        marginLeft: '6px'
+                    }}
+                />
             </Button>
         </Card>
     );
