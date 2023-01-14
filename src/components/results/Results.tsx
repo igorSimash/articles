@@ -9,9 +9,9 @@ import ArticlesWithFilter from "./ArticlesWithFilter";
 
 const Results: FC = () => {
     const {articles, loading, error} = useTypedSelector(state => state.article);
+    const filteredArrayLength = useTypedSelector(state => state.filter.filteredArrayLength)
     const filter = useTypedSelector(state => state.filter.filterText);
     const dispatch = useDispatch();
-    console.log(articles);
 
     useEffect(() => {
         dispatch(fetchArticles())
@@ -29,7 +29,7 @@ const Results: FC = () => {
                 sx={{ fontWeight: 600,
                     borderBottom: '1px solid #EAEAEA'
             }}>
-                Results: {articles.length}
+                Results: {filter.length > 0 ? filteredArrayLength : articles.length}
             </Typography>
             <Box
                 className=""
@@ -43,7 +43,7 @@ const Results: FC = () => {
                 >
                 {
 
-                    filter !== ''
+                    filter.length > 0
                         ?
                         <ArticlesWithFilter articles={articles} filter={filter}/>
                         :

@@ -9,7 +9,6 @@ import Box from "@mui/material/Box";
 const FilterInput:FC = () => {
     const dispatch = useDispatch();
     const text = useTypedSelector(state => state.filter.filterText)
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(changeFilterText(e.target.value))
     }

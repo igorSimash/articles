@@ -6,10 +6,10 @@ export function highlightText(text: string, filter: string): ReactFragment {
         <React.Fragment key={index}>
             {
                 part.toLowerCase() === filter.toLowerCase()
-                ?
-                (<span style={{backgroundColor: "#FFF619"}}>{part}</span>)
-                :
-                (part)
+                    ?
+                    (<span style={{backgroundColor: "#FFF619"}}>{part}</span>)
+                    :
+                    (part)
             }
         </React.Fragment>
     ));

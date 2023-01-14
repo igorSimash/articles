@@ -30,5 +30,4 @@ export const fetchCurrentArticle = (articleId: string | undefined): any => {
                 payload: 'Error in fetching articles'})
         }
     }
-
 }
