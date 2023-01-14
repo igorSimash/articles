@@ -3,7 +3,6 @@ import {Box, Typography} from "@mui/material";
 import {useTypedSelector} from "../../hooks/useTypedSelector";
 import {fetchArticles} from "../../redux/action-creators/fetchArticles";
 import {useDispatch} from "react-redux";
-import Article from "./article/Article";
 import MainPageLoader from "../loader/MainPageLoader";
 import ArticlesWithoutFilter from "./ArticlesWithoutFilter";
 import ArticlesWithFilter from "./ArticlesWithFilter";
@@ -16,7 +15,7 @@ const Results: FC = () => {
 
     useEffect(() => {
         dispatch(fetchArticles())
-    }, [dispatch]);
+    }, []);
 
     if(loading)
         return <MainPageLoader/>
@@ -43,7 +42,7 @@ const Results: FC = () => {
             }}
                 >
                 {
-                    filter
+                    filter !== ''
                         ?
                         <ArticlesWithFilter articles={articles} filter={filter}/>
                         :

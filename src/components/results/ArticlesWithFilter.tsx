@@ -1,5 +1,6 @@
 import React, {ReactFragment} from 'react';
 import Article from "./article/Article";
+import {filterArray} from "../../utils/filterArray";
 
 interface ArticlesWFProps {
     articles: any[],
@@ -20,22 +21,15 @@ function highlightText(text: string, filter: string):ReactFragment {
 }
 
 const ArticlesWithFilter: React.FC<ArticlesWFProps> = ({articles, filter}:ArticlesWFProps) => {
+    const filteredArray = filterArray(articles, filter);
     return (
         <>
-            {Array.from(articles)
-                .filter((art) =>
-                    art.title
-                        .toLowerCase()
-                        .includes(filter.toLowerCase()))
+            {Array.from(filteredArray)[0]
                 .map(article =>
                     <Article key={article.id} id={article.id} img={article.imageUrl} title={highlightText(article.title, filter)}
                              summary={article.summary} date={article.updatedAt}/>
             )}
-            {Array.from(articles)
-                .filter((art) =>
-                    art.summary
-                        .toLowerCase()
-                        .includes(filter.toLowerCase()))
+            {Array.from(filteredArray)[1]
                 .map(article =>
                     <Article key={article.id} id={article.id} img={article.imageUrl} title={article.title}
                              summary={highlightText(article.summary, filter)} date={article.updatedAt}/>
