@@ -1,26 +1,30 @@
 import React, {useEffect} from 'react';
 import { useDispatch } from 'react-redux';
 import {useNavigate, useParams} from "react-router-dom";
-import {fetchArticles} from "../../../redux/action-creators/fetchArticles";
+import {fetchCurrentArticle} from "../../../redux/action-creators/fetchArticles";
 import {useTypedSelector} from "../../../hooks/useTypedSelector";
 import Box from "@mui/material/Box";
 import './ArticlePage.css'
 import ArticlePaper from "./ArticlePaper";
-import {Typography} from "@mui/material";
 import WestIcon from '@mui/icons-material/West';
-import EastIcon from "@mui/icons-material/East";
 import Button from "@mui/material/Button";
+import MainPageLoader from "../../loader/MainPageLoader";
 
 
 const ArticlePage: React.FC = () => {
     const params = useParams();
     const dispatch = useDispatch();
-    const {articles, loading, error} = useTypedSelector(state => state.article);
-    const article: any = articles;
+    const {currentArticle, loading, error} = useTypedSelector(state => state.currentArticle);
+    const article: any = currentArticle;
     const navigate = useNavigate();
     useEffect(() => {
-        dispatch(fetchArticles(params.id));
+        dispatch(fetchCurrentArticle(params.id));
     }, [])
+
+    if(loading)
+        return <MainPageLoader/>
+    if(error)
+        console.error(error)
 
     return (
         <Box>

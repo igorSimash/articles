@@ -15,7 +15,7 @@ interface FetchArticleErrorAction {
 }
 
 export interface ArticleState {
-    articles: any[],
+    articles: any[]
     loading: boolean,
     error: null | string
 }
@@ -23,7 +23,10 @@ export interface ArticleState {
 export enum ArticleActionType {
     FETCH_ARTICLES = 'FETCH_ARTICLES',
     FETCH_ARTICLES_SUCCESS = 'FETCH_ARTICLES_SUCCESS',
-    FETCH_ARTICLES_ERROR = 'FETCH_ARTICLES_ERROR'
+    FETCH_ARTICLES_ERROR = 'FETCH_ARTICLES_ERROR',
 }
 
-export type ArticleAction = FetchArticleAction | FetchArticleSuccessAction | FetchArticleErrorAction;
+export type ArticleAction =
+    FetchArticleAction |
+    FetchArticleSuccessAction |
+    FetchArticleErrorAction;

@@ -73,6 +73,9 @@ const Article: React.FC<ArticleProps> = ({img, title, summary, date, id}: Articl
                     component={'p'}
                     color="text.secondary"
                     className={'article-summary'}
+                    sx={{
+                        marginTop: '20px'
+                    }}
                 >
                     {summary}
                 </Typography>

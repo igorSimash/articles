@@ -1,23 +1,11 @@
-import React, {ReactFragment} from 'react';
+import React from 'react';
 import Article from "./article/Article";
 import {filterArray} from "../../utils/filterArray";
+import {highlightText} from "../../utils/highlightText";
 
 interface ArticlesWFProps {
     articles: any[],
     filter: string
-}
-
-function highlightText(text: string, filter: string):ReactFragment {
-    const parts = text.split(new RegExp(`(${filter})`, "gi"));
-    return parts.map((part, index) => (
-        <React.Fragment key={index}>
-            {part.toLowerCase() === filter.toLowerCase() ? (
-                <span style={{ backgroundColor: "#FFF619" }}>{part}</span>
-            ) : (
-                part
-            )}
-        </React.Fragment>
-    ));
 }
 
 const ArticlesWithFilter: React.FC<ArticlesWFProps> = ({articles, filter}:ArticlesWFProps) => {

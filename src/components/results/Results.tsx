@@ -42,6 +42,7 @@ const Results: FC = () => {
             }}
                 >
                 {
+
                     filter !== ''
                         ?
                         <ArticlesWithFilter articles={articles} filter={filter}/>
