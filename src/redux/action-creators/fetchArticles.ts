@@ -2,6 +2,7 @@ import {ArticleAction, ArticleActionType} from "../../types/Article";
 import {Dispatch} from "redux";
 import axios from "axios";
 import {CurrArticleActionType, CurrentArticleAction} from "../../types/CurrentArticle";
+
 export const fetchArticles = (): any => {
     return async (dispatch: Dispatch<ArticleAction>) => {
         try {

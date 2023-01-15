@@ -17,9 +17,10 @@ const ArticlePage: React.FC = () => {
     const {currentArticle, loading, error} = useTypedSelector(state => state.currentArticle);
     const article: any = currentArticle;
     const navigate = useNavigate();
+
     useEffect(() => {
         dispatch(fetchCurrentArticle(params.id));
-    }, [])
+    }, [params.id])
 
     if(loading)
         return <MainPageLoader/>

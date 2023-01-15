@@ -1,9 +1,7 @@
-
 .loader-wrapper {
   display: flex;
   justify-content: center;
 }
-
 
 .loader {
   height: 90px;
@@ -14,12 +12,6 @@
 
   animation: spin infinite linear 1.2s;
 }
-
-
-
-
-
-
 
 @keyframes spin {
   to {

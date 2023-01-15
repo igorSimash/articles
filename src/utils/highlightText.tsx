@@ -1,11 +1,19 @@
 import React, {ReactFragment} from "react";
 
 export function highlightText(text: string, filter: string): ReactFragment {
-    const parts = text.split(new RegExp(`(${filter})`, "gi"));
+    const splitedFilter = filter.split(' ').map(element => {
+            return element.toLowerCase();
+        });
+
+    const joinedFilter = splitedFilter.join('|');
+
+    const parts = text.split(new RegExp(`(${joinedFilter})`, "gi"));
+
     return parts.map((part, index) => (
         <React.Fragment key={index}>
             {
-                part.toLowerCase() === filter.toLowerCase()
+                // part.toLowerCase() === filter.toLowerCase()
+                splitedFilter.includes(part.toLowerCase())
                     ?
                     (<span style={{backgroundColor: "#FFF619"}}>{part}</span>)
                     :

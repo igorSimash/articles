@@ -13,6 +13,7 @@ interface ArticlesWFProps {
 const ArticlesWithFilter: React.FC<ArticlesWFProps> = ({articles, filter}:ArticlesWFProps) => {
     const dispatch = useDispatch();
     const filteredArray = filterArray(articles, filter);
+
     useEffect(() => {
         dispatch(changeFilteredArrayLength(filteredArray.flat().length));
     }, [filteredArray])

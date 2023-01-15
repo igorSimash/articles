@@ -21,7 +21,7 @@ const Results: FC = () => {
         return <MainPageLoader/>
 
     if(error)
-        console.error(error)
+        console.error(error);
 
     return (
         <Box>
@@ -42,13 +42,11 @@ const Results: FC = () => {
             }}
                 >
                 {
-
                     filter.length > 0
                         ?
                         <ArticlesWithFilter articles={articles} filter={filter}/>
                         :
                         <ArticlesWithoutFilter articles={articles}/>
-
                 }
 
 
