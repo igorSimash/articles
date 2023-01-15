@@ -49,4 +49,4 @@ const ArticlePaper: React.FC<ArticlePaperProps> = ({title, summary}: ArticlePape
     );
 };
 
-export default ArticlePaper;
+export default React.memo(ArticlePaper);

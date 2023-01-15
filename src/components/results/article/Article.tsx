@@ -1,4 +1,4 @@
-import React, {ReactFragment} from 'react';
+import React, {ReactFragment, useMemo} from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -21,7 +21,7 @@ interface ArticleProps {
 
 const Article: React.FC<ArticleProps> = ({img, title, summary, date, id}: ArticleProps) => {
 
-    const validDate = getValidDate(date);
+    const validDate = useMemo(() => {return getValidDate(date)}, [date]);
     const navigate = useNavigate();
 
     return (
@@ -106,4 +106,4 @@ const Article: React.FC<ArticleProps> = ({img, title, summary, date, id}: Articl
     );
 };
 
-export default Article;
+export default React.memo(Article);

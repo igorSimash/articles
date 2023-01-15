@@ -16,4 +16,4 @@ const ArticlesWithoutFilter: React.FC<ArticlesWOFProps> = ({articles}: ArticlesW
     );
 };
 
-export default ArticlesWithoutFilter;
+export default React.memo(ArticlesWithoutFilter);

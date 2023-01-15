@@ -34,7 +34,6 @@ const ArticlePage: React.FC = () => {
                 summary={article.summary}
                 title={article.title}
             />
-
             <Button
                 onClick={() => navigate(`/`)}
                 size="small"

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import Article from "./article/Article";
 import {filterArray} from "../../utils/filterArray";
 import {highlightText} from "../../utils/highlightText";
@@ -12,7 +12,9 @@ interface ArticlesWFProps {
 
 const ArticlesWithFilter: React.FC<ArticlesWFProps> = ({articles, filter}:ArticlesWFProps) => {
     const dispatch = useDispatch();
-    const filteredArray = filterArray(articles, filter);
+    const filteredArray = useMemo(() => {
+        return filterArray(articles, filter);
+    }, [articles, filter])
 
     useEffect(() => {
         dispatch(changeFilteredArrayLength(filteredArray.flat().length));
@@ -35,4 +37,4 @@ const ArticlesWithFilter: React.FC<ArticlesWFProps> = ({articles, filter}:Articl
     );
 };
 
-export default ArticlesWithFilter;
+export default React.memo(ArticlesWithFilter);
